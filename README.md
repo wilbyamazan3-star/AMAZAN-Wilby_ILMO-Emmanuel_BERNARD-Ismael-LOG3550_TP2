@@ -1,6 +1,6 @@
 # LOG3550 – Devoir 2 : backend FastAPI (bibliothèque)
 
-Dépôt Git : 
+Dépôt Git : https://github.com/wilbyamazan3-star/AMAZAN-Wilby_ILMO-Emmanuel_BERNARD-Ismael-LOG3550_TP2.git
 
 
 ## Réponses aux questions
