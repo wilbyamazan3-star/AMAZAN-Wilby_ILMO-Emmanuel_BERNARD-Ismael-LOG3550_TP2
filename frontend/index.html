@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catalogue de bibliothèque : rechercher, filtrer et gérer des livres.">
+  <title>Bibliothèque — Catalogue de livres</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#accueil" aria-label="Accueil de la bibliothèque">📚 Bibliothèque</a>
+      <nav aria-label="Navigation principale">
+        <a href="#catalogue">Catalogue</a>
+        <a href="#ajouter">Ajouter un livre</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="accueil" class="container">
+    <section class="hero" aria-labelledby="titre-principal">
+      <p class="eyebrow">Bienvenue dans votre espace de lecture</p>
+      <h1 id="titre-principal">Catalogue de la bibliothèque</h1>
+      <p>Découvrez les livres, trouvez votre prochaine lecture et gérez la collection.</p>
+    </section>
+
+    <section id="catalogue" class="section" aria-labelledby="titre-catalogue">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Explorer la collection</p>
+          <h2 id="titre-catalogue">Nos livres</h2>
+        </div>
+        <p id="result-count" class="result-count" aria-live="polite"></p>
+      </div>
+
+      <div class="filters">
+        <div class="field search-field">
+          <label for="search">Rechercher un titre ou un auteur</label>
+          <input id="search" type="search" placeholder="Ex. : Victor Hugo">
+        </div>
+        <div class="field">
+          <label for="category-filter">Catégorie</label>
+          <select id="category-filter">
+            <option value="toutes">Toutes les catégories</option>
+            <option value="roman">Roman</option>
+            <option value="science">Science</option>
+            <option value="histoire">Histoire</option>
+            <option value="informatique">Informatique</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sort">Trier par</label>
+          <select id="sort">
+            <option value="titre-asc">Titre (A à Z)</option>
+            <option value="titre-desc">Titre (Z à A)</option>
+            <option value="annee-asc">Année (ancienne à récente)</option>
+            <option value="annee-desc">Année (récente à ancienne)</option>
+          </select>
+        </div>
+        <label class="checkbox-field" for="available-only">
+          <input id="available-only" type="checkbox">
+          Disponibles seulement
+        </label>
+      </div>
+
+      <p id="loading-message" class="loading-message" role="status" hidden>Chargement des livres…</p>
+      <div id="error-banner" class="error-banner" role="alert" hidden>
+        <p id="error-text"></p>
+        <button id="retry-button" class="button primary" type="button">Réessayer</button>
+      </div>
+
+      <div id="book-list" class="book-grid" aria-live="polite"></div>
+      <p id="empty-message" class="empty-message" hidden>Aucun livre ne correspond à votre recherche.</p>
+    </section>
+
+    <section id="ajouter" class="section add-section" aria-labelledby="titre-ajout">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Enrichir la collection</p>
+          <h2 id="titre-ajout">Ajouter un livre</h2>
+        </div>
+      </div>
+      <form id="book-form" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="title">Titre du livre</label>
+            <input id="title" name="title" type="text" minlength="2" required aria-describedby="title-error">
+            <small class="error" id="title-error" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="author">Auteur</label>
+            <input id="author" name="author" type="text" minlength="2" required aria-describedby="author-error">
+            <small class="error" id="author-error" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="year">Année de publication</label>
+            <input id="year" name="year" type="number" min="1450" max="2026" required aria-describedby="year-error">
+            <small class="error" id="year-error" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="category">Catégorie</label>
+            <select id="category" name="category" required aria-describedby="category-error">
+              <option value="">Choisir une catégorie</option>
+              <option value="roman">Roman</option>
+              <option value="science">Science</option>
+              <option value="histoire">Histoire</option>
+              <option value="informatique">Informatique</option>
+              <option value="autre">Autre</option>
+            </select>
+            <small class="error" id="category-error" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="isbn">ISBN (facultatif, 10 ou 13 chiffres)</label>
+            <input id="isbn" name="isbn" type="text" inputmode="numeric" aria-describedby="isbn-error">
+            <small class="error" id="isbn-error" aria-live="polite"></small>
+          </div>
+        </div>
+        <button class="button primary" type="submit">Ajouter le livre</button>
+        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 — Catalogue de la bibliothèque · Projet LOG3550</p>
+    </div>
+  </footer>
+</body>
+</html>
